@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "489133007433",
+    "project_id": "flores-4c91a",
+    "storage_bucket": "flores-4c91a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489133007433:android:58d84a8bbfdc1232aa5598",
+        "android_client_info": {
+          "package_name": "com.example.flores"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ-s_zSslTpb8JzlocfdpkSkIt5Wb5LHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
