@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Flores</string>
+    <string name="home_title">Lista de Flores</string>
+    <string name="detail_title">Detalle de Flor</string>
+    <string name="form_title">Formulario de Registro</string>
+    <string name="settings_title">Configuración</string>
+
+    <!-- Botones y Menú -->
+    <string name="btn_add">Agregar Registro</string>
+    <string name="btn_save">Guardar</string>
+    <string name="btn_back">Volver</string>
+    <string name="menu_home">Inicio</string>
+    <string name="menu_new_record">Nuevo Registro</string>
+    <string name="menu_settings">Configuración</string>
+
+    <!-- Campos de Formulario y Configuración -->
+    <string name="label_title">Título</string>
+    <string name="label_description">Descripción</string>
+    <string name="label_urgent">¿Es urgente?</string>
+    <string name="label_category">Categoría</string>
+    <string name="label_select_time">Seleccionar Hora</string>
+    <string name="label_store_name">Nombre del Establecimiento</string>
+    <string name="label_dark_mode">Tema Oscuro</string>
+    <string name="label_sync_cloud">Sincronizar automáticamente en la nube</string>
+    <string name="label_app_language">Idioma de la aplicación</string>
+    <string name="label_closing_time">Hora de Cierre</string>
+    <string name="btn_change_time">Cambiar Hora</string>
+
+    <!-- Categorías en Español -->
+    <string name="cat_general">General</string>
+    <string name="cat_work">Trabajo</string>
+    <string name="cat_personal">Personal</string>
+
+    <!-- Detail Screen Strings -->
+    <string name="label_detail_urgent">Urgent</string>
+    <string name="label_detail_category">Category</string>
+    <string name="label_detail_time">Time</string>
+    <string name="label_item_not_found">Record not found</string>
+</resources>

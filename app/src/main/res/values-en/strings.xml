@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Flowers</string>
+    <string name="home_title">Flower List</string>
+    <string name="detail_title">Flower Details</string>
+    <string name="form_title">Registration Form</string>
+    <string name="settings_title">Settings</string>
+
+    <!-- Buttons & Menu -->
+    <string name="btn_add">Add Record</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_back">Back</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_new_record">New Record</string>
+    <string name="menu_settings">Settings</string>
+
+    <!-- Form & Settings Labels -->
+    <string name="label_title">Title</string>
+    <string name="label_description">Description</string>
+    <string name="label_urgent">Is urgent?</string>
+    <string name="label_category">Category</string>
+    <string name="label_select_time">Select Time</string>
+    <string name="label_store_name">Store Name</string>
+    <string name="label_dark_mode">Dark Theme</string>
+    <string name="label_sync_cloud">Automatically sync to cloud</string>
+    <string name="label_app_language">App Language</string>
+    <string name="label_closing_time">Closing Time</string>
+    <string name="btn_change_time">Change Time</string>
+
+    <!-- Categorías en Inglés -->
+    <string name="cat_general">General</string>
+    <string name="cat_work">Work</string>
+    <string name="cat_personal">Personal</string>
+
+    <!-- Detail Screen Strings -->
+    <string name="label_detail_urgent">Urgent</string>
+    <string name="label_detail_category">Category</string>
+    <string name="label_detail_time">Time</string>
+    <string name="label_item_not_found">Record not found</string>
+</resources>
