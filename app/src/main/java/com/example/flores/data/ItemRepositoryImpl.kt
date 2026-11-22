@@ -15,7 +15,10 @@ class ItemRepositoryImpl : ItemRepository {
                 description = "Flor de primavera con aroma intenso.",
                 isUrgent = false,
                 category = "General",
-                time = "08:00 AM"
+                time = "08:00 AM",
+                stock = 25,
+                minStock = 10,
+                price = 35.0
             ),
             ItemModel(
                 id = 2,
@@ -23,7 +26,10 @@ class ItemRepositoryImpl : ItemRepository {
                 description = "Planta tropical de ambiente húmedo.",
                 isUrgent = true,
                 category = "Personal",
-                time = "10:30 AM"
+                time = "10:30 AM",
+                stock = 3,
+                minStock = 5,
+                price = 280.0
             ),
             ItemModel(
                 id = 3,
@@ -31,7 +37,10 @@ class ItemRepositoryImpl : ItemRepository {
                 description = "Flor ornamental que sigue la luz solar.",
                 isUrgent = false,
                 category = "Trabajo",
-                time = "02:15 PM"
+                time = "02:15 PM",
+                stock = 14,
+                minStock = 5,
+                price = 45.0
             )
         )
     )
@@ -42,6 +51,21 @@ class ItemRepositoryImpl : ItemRepository {
 
     override fun getItemById(id: Int): Flow<ItemModel?> {
         return itemsFlow.map { list -> list.find { it.id == id } }
+    }
+
+    override fun getLowStockItems(): Flow<List<ItemModel>> {
+        return itemsFlow.map { list ->
+            list.filter { it.stock <= it.minStock }
+        }
+    }
+
+    override suspend fun updateStock(id: Int, newStock: Int) {
+        val currentList = itemsFlow.value.toMutableList()
+        val index = currentList.indexOfFirst { it.id == id }
+        if (index != -1) {
+            currentList[index] = currentList[index].copy(stock = newStock.coerceAtLeast(0))
+            itemsFlow.value = currentList
+        }
     }
 
     override suspend fun insertItem(item: ItemModel) {

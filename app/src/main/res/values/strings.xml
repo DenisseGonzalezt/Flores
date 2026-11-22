@@ -31,9 +31,29 @@
     <string name="cat_work">Trabajo</string>
     <string name="cat_personal">Personal</string>
 
-    <!-- Detail Screen Strings -->
-    <string name="label_detail_urgent">Urgent</string>
-    <string name="label_detail_category">Category</string>
-    <string name="label_detail_time">Time</string>
-    <string name="label_item_not_found">Record not found</string>
+    <!-- Pantalla de Detalle -->
+    <string name="label_detail_urgent">Urgente</string>
+    <string name="label_detail_category">Categoría</string>
+    <string name="label_detail_time">Hora</string>
+    <string name="label_item_not_found">Registro no encontrado</string>
+
+    <!-- Gestión de Inventario -->
+    <string name="inv_units_in_stock">Unidades en stock: %1$d</string>
+    <string name="inv_low_stock_alerts">Alertas de bajo stock: %1$d</string>
+    <string name="inv_low_stock_filter">Bajo stock</string>
+    <string name="inv_no_low_stock">No hay productos con stock bajo</string>
+    <string name="inv_no_records">No hay registros disponibles</string>
+    <string name="inv_stock_label">Stock: %1$d</string>
+    <string name="inv_min_stock_short">(Mín: %1$d)</string>
+    <string name="inv_increase_stock">Aumentar stock</string>
+    <string name="inv_decrease_stock">Disminuir stock</string>
+    <string name="inv_input_stock">Cantidad en stock</string>
+    <string name="inv_input_min_stock">Stock mínimo</string>
+    <string name="inv_input_price">Precio unitario ($)</string>
+    <string name="inv_control_title">Control de Inventario</string>
+    <string name="inv_available_units">Existencias: %1$d unidades</string>
+    <string name="inv_min_stock_alert_label">Stock mínimo alerta: %1$d</string>
+    <string name="inv_low_stock_warning">Nivel de inventario bajo. Requiere reabastecimiento.</string>
+    <string name="inv_unit_price">Precio unitario:</string>
+    <string name="inv_total_value">Valor total en stock:</string>
 </resources>

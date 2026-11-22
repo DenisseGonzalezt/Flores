@@ -4,7 +4,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.flow.map
 
 class ItemRepositoryFirebase : ItemRepository {
 
@@ -26,6 +26,9 @@ class ItemRepositoryFirebase : ItemRepository {
                     val isUrgent = doc.getBoolean("urgent") ?: false
                     val category = doc.getString("category") ?: ""
                     val time = doc.getString("time") ?: ""
+                    val stock = doc.getLong("stock")?.toInt() ?: 0
+                    val minStock = doc.getLong("minStock")?.toInt() ?: 5
+                    val price = doc.getDouble("price") ?: 0.0
 
                     ItemModel(
                         id = id,
@@ -33,7 +36,10 @@ class ItemRepositoryFirebase : ItemRepository {
                         description = description,
                         isUrgent = isUrgent,
                         category = category,
-                        time = time
+                        time = time,
+                        stock = stock,
+                        minStock = minStock,
+                        price = price
                     )
                 }
                 trySend(itemsList)
@@ -59,13 +65,27 @@ class ItemRepositoryFirebase : ItemRepository {
                         description = it.getString("description") ?: "",
                         isUrgent = it.getBoolean("urgent") ?: false,
                         category = it.getString("category") ?: "",
-                        time = it.getString("time") ?: ""
+                        time = it.getString("time") ?: "",
+                        stock = it.getLong("stock")?.toInt() ?: 0,
+                        minStock = it.getLong("minStock")?.toInt() ?: 5,
+                        price = it.getDouble("price") ?: 0.0
                     )
                 }
                 trySend(item)
             }
 
         awaitClose { listener.remove() }
+    }
+
+    override fun getLowStockItems(): Flow<List<ItemModel>> {
+        return getItems().map { list ->
+            list.filter { it.stock <= it.minStock }
+        }
+    }
+
+    override suspend fun updateStock(id: Int, newStock: Int) {
+        itemsCollection.document(id.toString())
+            .update("stock", newStock.coerceAtLeast(0))
     }
 
     override suspend fun insertItem(item: ItemModel) {
@@ -76,9 +96,11 @@ class ItemRepositoryFirebase : ItemRepository {
             "description" to item.description,
             "urgent" to item.isUrgent,
             "category" to item.category,
-            "time" to item.time
+            "time" to item.time,
+            "stock" to item.stock,
+            "minStock" to item.minStock,
+            "price" to item.price
         )
-        // Guardado directo sin bloqueo de corrutina (.await)
         itemsCollection.document(newId.toString()).set(itemData)
     }
 
@@ -89,7 +111,10 @@ class ItemRepositoryFirebase : ItemRepository {
             "description" to item.description,
             "urgent" to item.isUrgent,
             "category" to item.category,
-            "time" to item.time
+            "time" to item.time,
+            "stock" to item.stock,
+            "minStock" to item.minStock,
+            "price" to item.price
         )
         itemsCollection.document(item.id.toString()).set(itemData)
     }

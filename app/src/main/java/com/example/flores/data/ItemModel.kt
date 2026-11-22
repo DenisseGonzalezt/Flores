@@ -6,5 +6,8 @@ data class ItemModel(
     val description: String,
     val isUrgent: Boolean = false,
     val category: String = "General",
-    val time: String = ""
+    val time: String = "",
+    val stock: Int = 0,
+    val minStock: Int = 5,
+    val price: Double = 0.0
 )

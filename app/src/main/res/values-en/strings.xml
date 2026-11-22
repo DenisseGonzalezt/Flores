@@ -36,4 +36,24 @@
     <string name="label_detail_category">Category</string>
     <string name="label_detail_time">Time</string>
     <string name="label_item_not_found">Record not found</string>
+
+    <!-- Inventory Management -->
+    <string name="inv_units_in_stock">Units in stock: %1$d</string>
+    <string name="inv_low_stock_alerts">Low stock alerts: %1$d</string>
+    <string name="inv_low_stock_filter">Low stock</string>
+    <string name="inv_no_low_stock">No low stock products</string>
+    <string name="inv_no_records">No records available</string>
+    <string name="inv_stock_label">Stock: %1$d</string>
+    <string name="inv_min_stock_short">(Min: %1$d)</string>
+    <string name="inv_increase_stock">Increase stock</string>
+    <string name="inv_decrease_stock">Decrease stock</string>
+    <string name="inv_input_stock">Stock quantity</string>
+    <string name="inv_input_min_stock">Minimum stock</string>
+    <string name="inv_input_price">Unit price ($)</string>
+    <string name="inv_control_title">Inventory Control</string>
+    <string name="inv_available_units">In stock: %1$d units</string>
+    <string name="inv_min_stock_alert_label">Low stock threshold: %1$d</string>
+    <string name="inv_low_stock_warning">Low inventory level. Restock required.</string>
+    <string name="inv_unit_price">Unit price:</string>
+    <string name="inv_total_value">Total stock value:</string>
 </resources>

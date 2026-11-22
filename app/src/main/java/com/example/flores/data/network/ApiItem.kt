@@ -6,7 +6,10 @@ import com.google.gson.annotations.SerializedName
 data class ApiItem(
     @SerializedName("id") val id: Int,
     @SerializedName("title") val title: String,
-    @SerializedName("body") val body: String
+    @SerializedName("body") val body: String,
+    @SerializedName("stock") val stock: Int = 10,
+    @SerializedName("minStock") val minStock: Int = 5,
+    @SerializedName("price") val price: Double = 50.0
 )
 
 fun ApiItem.toModel(): ItemModel {
@@ -16,6 +19,9 @@ fun ApiItem.toModel(): ItemModel {
         description = body,
         isUrgent = false,
         category = "Web API",
-        time = "12:00 PM"
+        time = "12:00 PM",
+        stock = stock,
+        minStock = minStock,
+        price = price
     )
 }

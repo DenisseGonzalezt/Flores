@@ -27,4 +27,20 @@ class DetailViewModel(
             }
         }
     }
+
+    fun incrementStock() {
+        val currentItem = _uiState.value.item ?: return
+        viewModelScope.launch {
+            repository.updateStock(currentItem.id, currentItem.stock + 1)
+        }
+    }
+
+    fun decrementStock() {
+        val currentItem = _uiState.value.item ?: return
+        if (currentItem.stock > 0) {
+            viewModelScope.launch {
+                repository.updateStock(currentItem.id, currentItem.stock - 1)
+            }
+        }
+    }
 }
