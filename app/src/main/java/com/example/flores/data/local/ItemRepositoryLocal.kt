@@ -19,13 +19,13 @@ class ItemRepositoryLocal(private val itemDao: ItemDao) : ItemRepository {
         }
     }
 
-    fun getLowStockItems(): Flow<List<ItemModel>> {
+    override fun getLowStockItems(): Flow<List<ItemModel>> {
         return itemDao.getLowStockItems().map { entities ->
             entities.map { it.toModel() }
         }
     }
 
-    suspend fun updateStock(id: Int, newStock: Int) {
+    override suspend fun updateStock(id: Int, newStock: Int) {
         itemDao.updateStock(id, newStock.coerceAtLeast(0))
     }
 

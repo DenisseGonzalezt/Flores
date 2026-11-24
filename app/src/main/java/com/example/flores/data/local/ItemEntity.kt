@@ -12,13 +12,9 @@ data class ItemEntity(
     val description: String,
     val isUrgent: Boolean,
     val category: String,
-    val time: String,
-    val stock: Int = 0,
-    val minStock: Int = 5,
-    val price: Double = 0.0
+    val time: String
 )
 
-// Funciones de conversión entre Modelo de Dominio y Entidad de BD Local
 fun ItemEntity.toModel(): ItemModel {
     return ItemModel(
         id = id,
@@ -26,10 +22,7 @@ fun ItemEntity.toModel(): ItemModel {
         description = description,
         isUrgent = isUrgent,
         category = category,
-        time = time,
-        stock = stock,
-        minStock = minStock,
-        price = price
+        time = time
     )
 }
 
@@ -40,9 +33,6 @@ fun ItemModel.toEntity(): ItemEntity {
         description = description,
         isUrgent = isUrgent,
         category = category,
-        time = time,
-        stock = stock,
-        minStock = minStock,
-        price = price
+        time = time
     )
 }
