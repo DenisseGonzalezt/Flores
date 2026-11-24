@@ -11,36 +11,27 @@ class ItemRepositoryImpl : ItemRepository {
         listOf(
             ItemModel(
                 id = 1,
-                title = "Rosa de jardín",
-                description = "Flor de primavera con aroma intenso.",
+                title = "Pedido #1 - Ramo de rosas",
+                description = "12 rosas rojas con tarjeta personalizada.",
                 isUrgent = false,
                 category = "General",
-                time = "08:00 AM",
-                stock = 25,
-                minStock = 10,
-                price = 35.0
+                time = "08:00 AM"
             ),
             ItemModel(
                 id = 2,
-                title = "Orquídea silvestre",
-                description = "Planta tropical de ambiente húmedo.",
+                title = "Pedido #2 - Arreglo de orquídea",
+                description = "Orquídea blanca en maceta de cerámica.",
                 isUrgent = true,
                 category = "Personal",
-                time = "10:30 AM",
-                stock = 3,
-                minStock = 5,
-                price = 280.0
+                time = "10:30 AM"
             ),
             ItemModel(
                 id = 3,
-                title = "Girasol dorado",
-                description = "Flor ornamental que sigue la luz solar.",
+                title = "Pedido #3 - Centro de mesa",
+                description = "Girasoles y follaje verde para evento.",
                 isUrgent = false,
                 category = "Trabajo",
-                time = "02:15 PM",
-                stock = 14,
-                minStock = 5,
-                price = 45.0
+                time = "02:15 PM"
             )
         )
     )
@@ -51,21 +42,6 @@ class ItemRepositoryImpl : ItemRepository {
 
     override fun getItemById(id: Int): Flow<ItemModel?> {
         return itemsFlow.map { list -> list.find { it.id == id } }
-    }
-
-    override fun getLowStockItems(): Flow<List<ItemModel>> {
-        return itemsFlow.map { list ->
-            list.filter { it.stock <= it.minStock }
-        }
-    }
-
-    override suspend fun updateStock(id: Int, newStock: Int) {
-        val currentList = itemsFlow.value.toMutableList()
-        val index = currentList.indexOfFirst { it.id == id }
-        if (index != -1) {
-            currentList[index] = currentList[index].copy(stock = newStock.coerceAtLeast(0))
-            itemsFlow.value = currentList
-        }
     }
 
     override suspend fun insertItem(item: ItemModel) {

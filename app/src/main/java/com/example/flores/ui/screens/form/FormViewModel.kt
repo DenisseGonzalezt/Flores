@@ -25,24 +25,6 @@ class FormViewModel(
         _uiState.value = _uiState.value.copy(descriptionInput = description)
     }
 
-    fun onStockChanged(stock: String) {
-        if (stock.all { it.isDigit() }) {
-            _uiState.value = _uiState.value.copy(stockInput = stock)
-        }
-    }
-
-    fun onMinStockChanged(minStock: String) {
-        if (minStock.all { it.isDigit() }) {
-            _uiState.value = _uiState.value.copy(minStockInput = minStock)
-        }
-    }
-
-    fun onPriceChanged(price: String) {
-        if (price.count { it == '.' } <= 1 && price.all { it.isDigit() || it == '.' }) {
-            _uiState.value = _uiState.value.copy(priceInput = price)
-        }
-    }
-
     fun onUrgentChanged(isUrgent: Boolean) {
         _uiState.value = _uiState.value.copy(isUrgent = isUrgent)
     }
@@ -64,20 +46,13 @@ class FormViewModel(
 
         viewModelScope.launch {
             try {
-                val parsedStock = currentState.stockInput.toIntOrNull() ?: 0
-                val parsedMinStock = currentState.minStockInput.toIntOrNull() ?: 5
-                val parsedPrice = currentState.priceInput.toDoubleOrNull() ?: 0.0
-
                 val newItem = ItemModel(
                     id = 0,
                     title = currentState.titleInput,
                     description = currentState.descriptionInput,
                     isUrgent = currentState.isUrgent,
                     category = currentState.selectedCategory.ifEmpty { "General" },
-                    time = currentState.selectedTime.ifEmpty { "12:00 PM" },
-                    stock = parsedStock,
-                    minStock = parsedMinStock,
-                    price = parsedPrice
+                    time = currentState.selectedTime.ifEmpty { "12:00 PM" }
                 )
                 repository.insertItem(newItem)
             } catch (e: Exception) {

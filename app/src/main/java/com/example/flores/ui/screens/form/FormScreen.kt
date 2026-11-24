@@ -1,7 +1,6 @@
 package com.example.flores.ui.screens.form
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -41,7 +39,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.flores.R
@@ -85,7 +82,6 @@ fun FormScreen(
                 .padding(24.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // 1. Campo de texto para Título
             OutlinedTextField(
                 value = uiState.titleInput,
                 onValueChange = { viewModel.onTitleChanged(it) },
@@ -95,7 +91,6 @@ fun FormScreen(
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            // 2. Campo de texto para Descripción
             OutlinedTextField(
                 value = uiState.descriptionInput,
                 onValueChange = { viewModel.onDescriptionChanged(it) },
@@ -103,47 +98,8 @@ fun FormScreen(
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
-
-            // 3. Campos de Inventario: Stock actual y Stock mínimo
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                OutlinedTextField(
-                    value = uiState.stockInput,
-                    onValueChange = { viewModel.onStockChanged(it) },
-                    label = { Text(stringResource(id = R.string.inv_input_stock)) },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    singleLine = true,
-                    modifier = Modifier.weight(1f)
-                )
-
-                OutlinedTextField(
-                    value = uiState.minStockInput,
-                    onValueChange = { viewModel.onMinStockChanged(it) },
-                    label = { Text(stringResource(id = R.string.inv_input_min_stock)) },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    singleLine = true,
-                    modifier = Modifier.weight(1f)
-                )
-            }
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            // 4. Precio unitario
-            OutlinedTextField(
-                value = uiState.priceInput,
-                onValueChange = { viewModel.onPriceChanged(it) },
-                label = { Text(stringResource(id = R.string.inv_input_price)) },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
-                singleLine = true,
-                modifier = Modifier.fillMaxWidth()
-            )
-
             Spacer(modifier = Modifier.height(16.dp))
 
-            // 5. Checkbox: ¿Es urgente?
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
@@ -161,7 +117,6 @@ fun FormScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // 6. RadioButtons: Selección de Categoría
             Text(
                 text = stringResource(id = R.string.label_category),
                 style = MaterialTheme.typography.titleMedium,
@@ -187,7 +142,6 @@ fun FormScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // 7. Botón selector de Hora
             OutlinedButton(
                 onClick = { showTimePicker = true },
                 modifier = Modifier.fillMaxWidth()
@@ -239,7 +193,6 @@ fun FormScreen(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // 8. Botón de Guardar
             if (uiState.isSaving) {
                 CircularProgressIndicator()
             } else {
