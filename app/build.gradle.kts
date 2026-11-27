@@ -33,6 +33,12 @@ android {
 }
 
 dependencies {
+    // Permite utilizar await() con las operaciones de Firebase.
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
+
+    // Permite utilizar ViewModels desde Jetpack Compose.
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation("androidx.navigation:navigation-compose:2.7.7")
@@ -44,8 +50,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
     // Firebase BoM y Firestore
+    // Firebase BoM, Firestore y Authentication
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
-    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-auth")
 
     implementation("androidx.compose.material:material-icons-extended")
 
